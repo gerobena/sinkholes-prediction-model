@@ -1,0 +1,17 @@
+# Datos crudos y procesados (Confidencial/Pesado)
+data/
+
+# Configuraciones del editor de código personal
+.vscode/
+
+# Archivos temporales de Python (Basura técnica)
+__pycache__/
+*.pyc
+
+# Archivos irrelevantes o de pruebas sueltas (Opcional, pero recomendado)
+dfclean.xlsx
+frecuencia_profundidad_sinkholes.png
+mapa_sinkholes_lille.html
+calculo_alboran.py
+mec.fps
+str.por
