@@ -2,7 +2,7 @@
 
 This work is part of the **SIRIMA project**, conducted as research for the **Research Fund for Coal and Steel (RFCS)**, which is a fund of the **European Union**.
 
-This repository contains the Operational Tool for sinkhole hazard assesment. The first part implies a Machine Learning pipeline and the inference engine developed to predict sinkhole susceptibility in coal mining areas. The project combines **Natural Language Processing (NLP)** techniques to interpret raw geological text and a **Random Forest** model for hazard classification. The second part is related to the manitude or energy learverage for the sinkhole ocurrence (in progress)
+This repository contains the **Operational Tool** for sinkhole hazard assessment. The first part includes a Machine Learning pipeline and an inference engine developed to predict sinkhole susceptibility in coal mining areas. The project combines Natural Language Processing (NLP) techniques to interpret raw geological text with a Random Forest model for susceptibility classification. The second part relates to the magnitude or energy leverage of sinkhole occurrences (in progress)
 
 > **🚧 Project Status:** At this point, the **first part** of the operational tool for the SIRIMA project has been developed. The second part, related to **sinkhole magnitude**, is currently pending. This subsequent phase is required to ultimately calculate the final **hazard index**.
 
