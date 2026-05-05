@@ -1,4 +1,4 @@
-# Datos crudos y procesados (Confidencial/Pesado)
+# Datos crudos y procesados (Confidencial)
 data/
 
 # Configuraciones del editor de código personal
@@ -8,7 +8,7 @@ data/
 __pycache__/
 *.pyc
 
-# Archivos irrelevantes o de pruebas sueltas (Opcional, pero recomendado)
+# Archivos irrelevantes o de pruebas sueltas
 dfclean.xlsx
 frecuencia_profundidad_sinkholes.png
 mapa_sinkholes_lille.html
