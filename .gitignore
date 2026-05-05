@@ -15,3 +15,7 @@ mapa_sinkholes_lille.html
 calculo_alboran.py
 mec.fps
 str.por
+
+# Notebooks de borradores y pruebas
+PEM_RS2_Calculos.ipynb
+prueba_susceptibilidad.ipynb
