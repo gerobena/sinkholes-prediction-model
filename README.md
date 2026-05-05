@@ -1,29 +1,29 @@
 # Sinkhole Susceptibility Prediction Model 🕳️
 
-Este trabajo es parte del proyecto SIRIMA, como parte de la investigacion del Research Fund for Coal and Steel (RFCS) que es un fondo de la European Union
+This work is part of the **SIRIMA project**, conducted as research for the **Research Fund for Coal and Steel (RFCS)**, which is a fund of the **European Union**.
 
-Este repositorio contiene el pipeline de Machine Learning y el motor de inferencia desarrollados para predecir la susceptibilidad de formación de sinkholes en zonas mineras de carbon. 
+This repository contains the Operational Tool for sinkhole hazard assesment. The first part implies a Machine Learning pipeline and the inference engine developed to predict sinkhole susceptibility in coal mining areas. The project combines **Natural Language Processing (NLP)** techniques to interpret raw geological text and a **Random Forest** model for hazard classification. The second part is related to the manitude or energy learverage for the sinkhole ocurrence (in progress)
 
-El proyecto combina técnicas de **Procesamiento de Lenguaje Natural (NLP)** para interpretar texto geológico libre y un modelo **Random Forest** para la clasificación del riesgo.
+> **🚧 Project Status:** At this point, the **first part** of the operational tool for the SIRIMA project has been developed. The second part, related to **sinkhole magnitude**, is currently pending. This subsequent phase is required to ultimately calculate the final **hazard index**.
 
-## 📁 Estructura del Repositorio
+## 📁 Repository Structure
 
-Para garantizar la trazabilidad y la separación entre los entornos de desarrollo y producción, el código está estructurado de la siguiente manera:
+To ensure traceability and the separation between development and production environments, the code is structured as follows:
 
-*   **`scripts/`**: Contiene `sinkholes_prediction.ipynb`, el cuaderno principal donde se realizó la limpieza de datos, el Análisis Exploratorio de Datos (EDA) y la imputación inicial de variables objetivo mediante K-Means.
-*   **`entrenar_y_empaquetar.py`**: Script orquestador de MLOps. Toma los datos procesados, entrena el pipeline de NLP (TF-IDF) + Random Forest, calcula los umbrales de Jenks y exporta el artefacto final.
-*   **`models/`**: Directorio de salida que almacena el modelo serializado (`pipeline_susceptibilidad_NLP_randomforest.pkl`) listo para producción.
-*   **`motor_sirima_randomforest.py`**: **Motor de Inferencia**. Es el script de producción que carga el `.pkl` y procesa las peticiones (inputs) para devolver el nivel de riesgo. Está blindado contra errores físicos y de formato.
-*   **`test.py`**: Script de pruebas de humo (*smoke test*) para validar los diferentes flujos del motor (NLP, manual y manejo de errores).
+*   **`scripts/`**: Contains `sinkholes_prediction.ipynb`, the main notebook where data cleaning, Exploratory Data Analysis (EDA), and initial target variable imputation were performed.
+*   **`train_and_package.py`**: Orchestrator script. It takes the processed data, trains the NLP pipeline (TF-IDF) + Random Forest, calculates Jenks natural breaks, and exports the final artifact.
+*   **`models/`**: Output directory storing the serialized model (`pipeline_susceptibilidad_NLP_randomforest.pkl`) ready for production.
+*   **`motor_sirima_randomforest.py`**: **Inference Engine**. This is the production script that loads the `.pkl` file and processes requests (inputs) to return the susceptibility level. It is shielded against physical and formatting errors.
+*   **`test.py`**: Test script to validate different engine flows (NLP, manual, and error handling). This script is intended for the end-user to test the model.
 
-> **Nota sobre los datos:** Por motivos de confidencialidad, la carpeta `data/` (que contiene los archivos crudos y .parquet) está excluida de este repositorio mediante `.gitignore`.
+> **Note on Data:** For confidentiality reasons, the `data/` folder (containing raw and .parquet files) is excluded from this repository via `.gitignore`.
 
-## ¿Cómo reproducir el entorno (Local)?
+## ⚙️ How to reproduce the environment (Local)?
 
-Si deseas ejecutar el código fuente o reentrenar el modelo, sigue estos pasos:
+If you wish to run the source code or retrain the model, follow these steps:
 
-1. Clona este repositorio.
-2. Crea un entorno virtual (Conda o venv) con Python 3.9+.
-3. Instala las dependencias estrictas de producción:
-   ```bash
-   pip install -r requirements.txt
+1.  Clone this repository.
+2.  Create a virtual environment (Conda or venv) with Python 3.9+.
+3.  Install strict production dependencies:
+    ```bash
+    pip install -r requirements.txt
