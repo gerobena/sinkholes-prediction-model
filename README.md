@@ -2,18 +2,24 @@
 
 This work is part of the **SIRIMA project**, conducted as research for the **Research Fund for Coal and Steel (RFCS)**, which is a fund of the **European Union**.
 
-This repository contains the **Operational Tool** for sinkhole hazard assessment. The first part includes a Machine Learning pipeline and an inference engine developed to predict sinkhole susceptibility in coal mining areas. The project combines Natural Language Processing (NLP) techniques to interpret raw geological text with a Random Forest model for susceptibility classification. The second part relates to the magnitude or energy leverage of sinkhole occurrences (in progress)
+This repository contains the **Operational Tool** for sinkhole hazard assessment. It encompasses a comprehensive data analytic pipeline, a Machine Learning inference engine, and a web-based user interface developed to predict sinkhole susceptibility and final hazard across historical transnational coal mining areas (France, Germany, and Poland).
 
-> **🚧 Project Status:** At this point, the **first part** of the operational tool for the SIRIMA project has been developed. The second part, related to **sinkhole magnitude**, is currently pending. This subsequent phase is required to ultimately calculate the final **hazard index**.
+> **✅ Project Status:** The operational tool for the SIRIMA project integrates the **Susceptibility Module**, the **Magnitude Module**, and the **Hazard Assessment**, all deployed via an interactive web application.
 
 ## 📁 Repository Structure
 
 To ensure traceability and the separation between development and production environments, the code is structured as follows:
 
+*  **`app.py`**: **Streamlit Web Application**. This is the user-friendly interface for deploying the tool. It allows users to input physical/geological parameters and receive visual hazard cards.
+
 *   **`scripts/`**: Contains `sinkholes_prediction.ipynb`, the main notebook where data cleaning, Exploratory Data Analysis (EDA), and initial target variable imputation were performed.
+
 *   **`train_and_package.py`**: Orchestrator script. It takes the processed data, trains the NLP pipeline (TF-IDF) + Random Forest, calculates Jenks natural breaks, and exports the final artifact.
-*   **`models/`**: Output directory storing the serialized model (`pipeline_susceptibilidad_NLP_randomforest.pkl`) ready for production.
-*   **`motor_sirima_randomforest.py`**: **Inference Engine**. This is the production script that loads the `.pkl` file and processes requests (inputs) to return the susceptibility level. It is shielded against physical and formatting errors.
+
+*   **`models/pipeline_sirima_completo.pkl`**: It contains all results from `sinkholes_prediction.ipynb` packeged together.
+
+*   **`motor_sirima_completo.py`**: **Inference Engine**. This is the production script that loads the `.pkl` file and processes requests (inputs) to return the susceptibility level. It is shielded against physical and formatting errors.
+
 *   **`test.py`**: Test script to validate different engine flows (NLP, manual, and error handling). This script is intended for the end-user to test the model.
 
 > **Note on Data:** For confidentiality reasons, the `data/` folder (containing raw and .parquet files) is excluded from this repository via `.gitignore`.
@@ -27,3 +33,7 @@ If you wish to run the source code or retrain the model, follow these steps:
 3.  Install strict production dependencies:
     ```bash
     pip install -r requirements.txt
+4.  Run the Streamlit application:
+    ```bash
+    streamlit run scripts/app.py
+    
