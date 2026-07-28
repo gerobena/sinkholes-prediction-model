@@ -6,6 +6,12 @@ This repository contains the **Operational Tool** for sinkhole hazard assessment
 
 > **✅ Project Status:** The operational tool for the SIRIMA project integrates the **Susceptibility Module**, the **Magnitude Module**, and the **Hazard Assessment**, all deployed via an interactive web application.
 
+Susceptibility Module: The pipeline processes core variables called conditioning variables, including the depth of the drift variable, the coal working thickness of the mine, and the overburden material resistance. The algorithm computes a weighted sum of each condition factor using expert judgement weights and discretizes it using Jenks Natural Breaks.
+
+Magnitude Module: This pipeline was developed by analyzing a diverse set of variables. Specifically, parameters such as the dip angle of the coal layer, historical mining merhods, and the physical mechanism of the collapse were evaluated. By integrating these factors, a conditional probability analysis was performed to categorize the overall sinkhole magnitude into distinct operational tiers.
+
+Comprehensive Hazard Assessment: Synthesizes the terrain's Susceptibility with the Expected Magnitude to provide a definitive risk index.
+
 ## 📁 Repository Structure
 
 To ensure traceability and the separation between development and production environments, the code is structured as follows:
@@ -14,13 +20,11 @@ To ensure traceability and the separation between development and production env
 
 *   **`scripts/`**: Contains `sinkholes_prediction.ipynb`, the main notebook where data cleaning, Exploratory Data Analysis (EDA), and initial target variable imputation were performed.
 
-*   **`train_and_package.py`**: Orchestrator script. It takes the processed data, trains the NLP pipeline (TF-IDF) + Random Forest, calculates Jenks natural breaks, and exports the final artifact.
+*   **`train_and_package.py`**: Orchestrator script. It acts as a central control panel to update weights; taking the processed data, training the NLP pipeline + Random Forest, dinamically calculating the conditional probability matrix, computing thresholds and exporting the final results into a `.pkl` artifact.
 
 *   **`models/pipeline_sirima_completo.pkl`**: It contains all results from `sinkholes_prediction.ipynb` packeged together.
 
-*   **`motor_sirima_completo.py`**: **Inference Engine**. This is the production script that loads the `.pkl` file and processes requests (inputs) to return the susceptibility level. It is shielded against physical and formatting errors.
-
-*   **`test.py`**: Test script to validate different engine flows (NLP, manual, and error handling). This script is intended for the end-user to test the model.
+*   **`motor_sirima_completo.py`**: **Inference Engine**. This is the production script that loads the `.pkl` file and processes requests (inputs) to return the susceptibility, magnitude, and hazard levels. It is shielded against physical and formatting errors.
 
 > **Note on Data:** For confidentiality reasons, the `data/` folder (containing raw and .parquet files) is excluded from this repository via `.gitignore`.
 
